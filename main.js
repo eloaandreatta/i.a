@@ -6,7 +6,7 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado = "Como a música de um artista pode promover o respeito e a conscientização sobre a inclusão e a caça ilegal que leva à extinção de animais?" ,
+        enunciado: "Como a música de um artista pode promover o respeito e a conscientização sobre a inclusão e a caça ilegal que leva à extinção de animais?" ,
         alternativas: [
             {
                texto: "Sim",
@@ -19,7 +19,7 @@ const perguntas = [
         ]
     },
     {
-        enunciado = "A acessibilidade, a diversidade musical e o crescimento urbano desenfreado impactam a inclusão social e a preservação de espécie ameaçadas?" ,
+        enunciado: "A acessibilidade, a diversidade musical e o crescimento urbano desenfreado impactam a inclusão social e a preservação de espécie ameaçadas?" ,
         alternativas: [
             {
                texto: "Sim",
@@ -32,7 +32,7 @@ const perguntas = [
         ]
     },
     { 
-        enunciado = "Como a tecnologia assistiva está sendo aplicada para promover inclusão, a música como instrumento de conscientização e a luta contra o desmatamento para evitar a extinção de animais?" ,
+        enunciado: "Como a tecnologia assistiva está sendo aplicada para promover inclusão, a música como instrumento de conscientização e a luta contra o desmatamento para evitar a extinção de animais?" ,
     alternativas: [
         {
            texto: "Sim",
@@ -43,15 +43,15 @@ const perguntas = [
             afirmação: "afirmação"
         }
     ]
-    }
-]
+    },
+];
 
-let atual = 0;
+let atual = 0; 
 let perguntaAtual;
 let historiaFinal = "";
 
-function mostraPergunta(){
-    if (atual >= perguntas.length) {
+function mostraPergunta() {
+    if(atual >= perguntas.length){
         mostraResultado();
         return;
     }
@@ -59,29 +59,28 @@ function mostraPergunta(){
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
     mostraAlternativas();
-
 }
+
 function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
+    for(const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-
     }
 }
 
-function respostaSelecionada(opcaoSelecionada) {
+function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " "
+    historiaFinal += afirmacoes + " ";
     atual++;
-    mostraPergunta(); 
+    mostraPergunta();
 }
 
 function mostraResultado(){
     caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.textContent = ""; 
 }
 
-mostraPergunta
+mostraPergunta();
